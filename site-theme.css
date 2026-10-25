@@ -1,0 +1,252 @@
+/* site-theme.css */
+
+/* Mailbox look from ~/projects/email (src/web/app.css), on every page except JPCL.
+   JPCL keeps its own palette in jpcl-theme.css. */
+
+@font-face {
+  font-family: "Comic Code";
+  src: url("https://m.doughmination.gay/f/Comic-Code/woff2/ComicCode-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Comic Code";
+  src: url("https://m.doughmination.gay/f/Comic-Code/woff2/ComicCode-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Comic Code";
+  src: url("https://m.doughmination.gay/f/Comic-Code/woff2/ComicCode-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Comic Code";
+  src: url("https://m.doughmination.gay/f/Comic-Code/woff2/ComicCode-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Tokens from the mailbox, plus Mintlify's RGB colour variables */
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) {
+  --bg: #0b0a0d;
+  --raised: rgb(255 255 255 / 3.5%);
+  --raised-hover: rgb(255 255 255 / 6%);
+  --line: rgb(255 255 255 / 9%);
+  --text: #ece9ef;
+  --muted: #a49eab;
+  --accent: #eb459e;
+  --accent-dim: rgb(235 69 158 / 14%);
+  --accent-line: rgb(235 69 158 / 40%);
+  --danger: #ff5c7a;
+  --radius: 1rem;
+  --radius-sm: 0.5rem;
+  --font: "Comic Code", ui-monospace, monospace;
+
+  --primary: 235 69 158;
+  --primary-light: 235 69 158;
+  --primary-dark: 235 69 158;
+  --background-dark: 11 10 13;
+
+  --gray-50: 236 233 239;
+  --gray-100: 222 218 226;
+  --gray-200: 200 195 206;
+  --gray-300: 164 158 171;
+  --gray-400: 138 132 146;
+  --gray-500: 105 99 112;
+  --gray-600: 75 70 81;
+  --gray-700: 52 48 57;
+  --gray-800: 32 29 36;
+  --gray-900: 20 18 23;
+  --gray-950: 11 10 13;
+
+  color-scheme: dark;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(255 255 255 / 14%) transparent;
+}
+
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* Comic Code everywhere, code included */
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) :is(body, button, input, code, pre, kbd, h1, h2, h3, h4, h5, h6, #page-title) {
+  font-family: var(--font) !important;
+}
+
+/* The site's wallpaper and fade, fixed behind the page */
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) body::before,
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) body::before {
+  background: url("/media/background.avif") center / cover no-repeat;
+  opacity: 0.5;
+}
+
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) body::after {
+  background:
+    linear-gradient(rgb(11 10 13 / 55%), rgb(11 10 13 / 80%) 55%, var(--bg)),
+    radial-gradient(70% 60% at 20% 30%, rgb(235 69 158 / 12%), transparent 70%);
+}
+
+/* Let the wallpaper show through the layout */
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) :is(#body-content, #content-area, #table-of-contents) {
+  background-color: transparent;
+}
+
+/* Sidebar shell and its top fade, but not nav items or icons */
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) #sidebar,
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) #sidebar div:not(:has(> a, > button)) {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) #navbar {
+  background-color: rgb(11 10 13 / 72%);
+  backdrop-filter: blur(12px);
+}
+
+/* Links: body ink with an accent underline */
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) .mdx-content a.link {
+  color: var(--text);
+  text-decoration-color: rgb(235 69 158 / 55%);
+  text-underline-offset: 0.2em;
+}
+
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) .mdx-content a.link:hover {
+  color: #ffffff;
+  text-decoration-color: var(--accent);
+}
+
+/* Headings */
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) .mdx-content :is(h1, h2, h3),
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) #page-title {
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+/* Eyebrow: small uppercase accent label */
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) .eyebrow {
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Raised surfaces: cards, callouts, accordions, code */
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) :is(.card, .callout, .accordion, .code-block, .code-group) {
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius) !important;
+  background-color: var(--raised) !important;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) .code-block-background {
+  background-color: transparent !important;
+}
+
+/* Cards pick up an accent ring on hover */
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) a.card:hover,
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) .card:has(a):hover {
+  border-color: var(--accent-line) !important;
+  box-shadow: 0 0 0 4px var(--accent-dim);
+}
+
+/* Callout accents */
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) .callout {
+  --callout-accent: var(--muted);
+}
+
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) .callout :is(p, div, span, li) {
+  color: var(--text) !important;
+}
+
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) .callout :is(svg, strong) {
+  color: var(--callout-accent) !important;
+}
+
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) .callout:is([data-callout-type="info"], [data-callout-type="tip"], [data-callout-type="check"]) {
+  --callout-accent: var(--accent);
+  border-color: var(--accent-line) !important;
+}
+
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) .callout:is([data-callout-type="warning"], [data-callout-type="danger"]) {
+  --callout-accent: var(--danger);
+  border-color: rgb(255 92 122 / 40%) !important;
+}
+
+/* Inline code */
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) .mdx-content :not(pre) > code {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background-color: rgb(0 0 0 / 25%);
+  color: var(--text);
+}
+
+/* Tables */
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) .mdx-content :is(table, th, td, tr) {
+  border-color: var(--line);
+}
+
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) .mdx-content th {
+  background-color: var(--raised);
+}
+
+/* Tabs */
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) .tabs [aria-selected="true"] {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Search and navbar buttons: pills */
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) :is(#search-bar-entry, #topbar-cta-button a) {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background-color: var(--raised);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) :is(#search-bar-entry, #topbar-cta-button a):hover {
+  border-color: var(--accent-line);
+  box-shadow: 0 0 0 4px var(--accent-dim);
+}
+
+/* Focus ring */
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) :focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--accent-dim);
+}
+
+html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) ::selection {
+  background-color: rgb(235 69 158 / 30%);
+  color: #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) *,
+  html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) *::before,
+  html:not([data-current-path="/jpcl"]):not([data-current-path^="/jpcl/"]) *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

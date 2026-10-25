@@ -1,0 +1,12 @@
+/* no-assistant.css */
+
+/* Hide Mintlify's AI assistant on every page */
+#assistant-entry,
+#assistant-entry-mobile,
+#chat-assistant-sheet,
+.chat-assistant-floating-input,
+[data-assistant-bar],
+[data-layout-item="assistant-entry"],
+[data-component-part="assistant-entry"] {
+  display: none !important;
+}

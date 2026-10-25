@@ -1,0 +1,151 @@
+/* jpcl-theme.css */
+
+/* JPCL palette from jpcl-lang/web, scoped to the JPCL pages only.
+   kon #0F2540 · kon #192236 · momo #F596AA · sakura #FEDFE1
+   torinoko #DAC9A6 · byakugun #83CCD2 · fuji #A99CD6 */
+
+/* Mintlify colour variables: space-separated RGB */
+html[data-current-path="/jpcl"],
+html[data-current-path^="/jpcl/"] {
+  --primary: 245 150 170;
+  --primary-light: 245 150 170;
+  --primary-dark: 245 150 170;
+  --background-dark: 25 34 54;
+
+  --gray-50: 231 238 247;
+  --gray-100: 214 224 236;
+  --gray-200: 190 204 221;
+  --gray-300: 157 176 198;
+  --gray-400: 128 146 170;
+  --gray-500: 100 118 142;
+  --gray-600: 58 85 119;
+  --gray-700: 38 56 84;
+  --gray-800: 15 37 64;
+  --gray-900: 15 37 64;
+  --gray-950: 10 18 32;
+}
+
+html[data-current-path="/jpcl"] body,
+html[data-current-path^="/jpcl/"] body {
+  background-color: #192236;
+  color: #e7eef7;
+}
+
+/* Selection */
+html[data-current-path="/jpcl"] ::selection,
+html[data-current-path^="/jpcl/"] ::selection {
+  background-color: rgb(245 150 170 / 30%);
+  color: #ffffff;
+}
+
+/* Headings */
+html[data-current-path="/jpcl"] .mdx-content :is(h1, h2, h3, h4),
+html[data-current-path^="/jpcl/"] .mdx-content :is(h1, h2, h3, h4),
+html[data-current-path="/jpcl"] #page-title,
+html[data-current-path^="/jpcl/"] #page-title {
+  color: #ffffff;
+}
+
+/* Links: momo */
+html[data-current-path="/jpcl"] .mdx-content a.link,
+html[data-current-path^="/jpcl/"] .mdx-content a.link {
+  color: #f596aa;
+  text-decoration-color: rgb(245 150 170 / 45%);
+}
+
+html[data-current-path="/jpcl"] .mdx-content a.link:hover,
+html[data-current-path^="/jpcl/"] .mdx-content a.link:hover {
+  color: #f7aabb;
+  text-decoration-color: #f7aabb;
+}
+
+/* Code blocks sit on the icon ground */
+html[data-current-path="/jpcl"] .code-block,
+html[data-current-path^="/jpcl/"] .code-block,
+html[data-current-path="/jpcl"] .code-block-background,
+html[data-current-path^="/jpcl/"] .code-block-background {
+  background-color: #0f2540 !important;
+  border-color: rgb(154 182 214 / 16%) !important;
+}
+
+/* Inline code: torinoko, the colour the language site gives keys */
+html[data-current-path="/jpcl"] .mdx-content :not(pre) > code,
+html[data-current-path^="/jpcl/"] .mdx-content :not(pre) > code {
+  background-color: #0f2540;
+  border-color: rgb(154 182 214 / 16%);
+  color: #dac9a6;
+}
+
+/* Inline code inside a link keeps the link colour */
+html[data-current-path="/jpcl"] .mdx-content a :not(pre) > code,
+html[data-current-path^="/jpcl/"] .mdx-content a :not(pre) > code,
+html[data-current-path="/jpcl"] .mdx-content a > code,
+html[data-current-path^="/jpcl/"] .mdx-content a > code {
+  color: inherit;
+}
+
+/* Tables */
+html[data-current-path="/jpcl"] .mdx-content :is(table, th, td, tr),
+html[data-current-path^="/jpcl/"] .mdx-content :is(table, th, td, tr) {
+  border-color: rgb(154 182 214 / 16%);
+}
+
+html[data-current-path="/jpcl"] .mdx-content th,
+html[data-current-path^="/jpcl/"] .mdx-content th {
+  background-color: #0f2540;
+  color: #e7eef7;
+}
+
+/* Callouts: one accent per type, on the icon ground */
+html[data-current-path="/jpcl"] .callout,
+html[data-current-path^="/jpcl/"] .callout {
+  --callout-accent: #f596aa;
+  background-color: #0f2540 !important;
+  border-color: color-mix(in srgb, var(--callout-accent) 45%, transparent) !important;
+}
+
+html[data-current-path="/jpcl"] .callout :is(svg, strong),
+html[data-current-path^="/jpcl/"] .callout :is(svg, strong) {
+  color: var(--callout-accent) !important;
+}
+
+html[data-current-path="/jpcl"] .callout[data-callout-type="note"],
+html[data-current-path^="/jpcl/"] .callout[data-callout-type="note"] {
+  --callout-accent: #6e7b8b;
+}
+
+html[data-current-path="/jpcl"] .callout[data-callout-type="info"],
+html[data-current-path^="/jpcl/"] .callout[data-callout-type="info"],
+html[data-current-path="/jpcl"] .callout[data-callout-type="tip"],
+html[data-current-path^="/jpcl/"] .callout[data-callout-type="tip"] {
+  --callout-accent: #83ccd2;
+}
+
+html[data-current-path="/jpcl"] .callout[data-callout-type="warning"],
+html[data-current-path^="/jpcl/"] .callout[data-callout-type="warning"] {
+  --callout-accent: #dac9a6;
+}
+
+html[data-current-path="/jpcl"] .callout[data-callout-type="danger"],
+html[data-current-path^="/jpcl/"] .callout[data-callout-type="danger"] {
+  --callout-accent: #ff8f9e;
+}
+
+/* Tabs and accordions pick up momo */
+html[data-current-path="/jpcl"] .tabs [aria-selected="true"],
+html[data-current-path^="/jpcl/"] .tabs [aria-selected="true"] {
+  color: #f596aa;
+  border-color: #f596aa;
+}
+
+html[data-current-path="/jpcl"] .accordion,
+html[data-current-path^="/jpcl/"] .accordion {
+  background-color: #0f2540;
+  border-color: rgb(154 182 214 / 16%);
+}
+
+/* Blockquotes */
+html[data-current-path="/jpcl"] .mdx-content blockquote,
+html[data-current-path^="/jpcl/"] .mdx-content blockquote {
+  border-left-color: rgb(245 150 170 / 45%);
+}

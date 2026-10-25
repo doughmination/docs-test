@@ -1,72 +1,117 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mintlify Starter Kit",
+  "name": "Doughmination Docs",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#eb459e",
+    "light": "#eb459e",
+    "dark": "#eb459e"
   },
-  "favicon": "/favicon.svg",
+  "appearance": {
+    "default": "dark",
+    "strict": true
+  },
+  "icons": {
+    "library": "lucide"
+  },
+  "favicon": "/media/favicon.jpg",
+  "logo": {
+    "light": "/media/favicon.jpg",
+    "dark": "/media/favicon.jpg"
+  },
   "navigation": {
-    "pages": [
+    "groups": [
       {
-        "group": "Getting Started",
+        "group": "Welcome",
         "pages": [
           "index",
-          "quickstart"
+          "faq"
+        ]
+      },
+      {
+        "group": "Sandrone",
+        "icon": "/media/sandrone.png",
+        "root": "sandrone",
+        "pages": [
+          "sandrone/commands",
+          "sandrone/setup",
+          "sandrone/official-links",
+          "sandrone/downloads",
+          "sandrone/flags",
+          "sandrone/units",
+          "sandrone/errors",
+          "sandrone/development",
+          "sandrone/tos",
+          "sandrone/privacy"
+        ]
+      },
+      {
+        "group": "pkviewer",
+        "icon": "/media/pkviewer.svg",
+        "root": "pkviewer",
+        "pages": [
+          "pkviewer/claiming",
+          "pkviewer/addresses",
+          "pkviewer/appearance",
+          "pkviewer/badges",
+          "pkviewer/css",
+          "pkviewer/privacy"
+        ]
+      },
+      {
+        "group": "JPCL",
+        "icon": "https://raw.githubusercontent.com/jpcl-lang/assets/refs/heads/main/png/icon.png",
+        "root": "jpcl",
+        "pages": [
+          "jpcl/start",
+          "jpcl/syntax",
+          "jpcl/recipes",
+          "jpcl/py",
+          "jpcl/npm",
+          "jpcl/go",
+          "jpcl/cli",
+          "jpcl/errors",
+          "jpcl/spec"
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
-  },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    ]
   },
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:support@mintlify.com"
+        "label": "Discord",
+        "href": "https://discord.gg/N8gCjS294R"
+      },
+      {
+        "label": "Matrix",
+        "href": "https://matrix.to/#/#doughmination:matrix.org"
       }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://app.mintlify.com"
-    }
+    ]
+  },
+  "search": {
+    "prompt": "Search"
   },
   "contextual": {
     "options": [
       "copy",
-      "view",
-      "chatgpt",
-      "claude",
-      "perplexity",
-      "mcp",
-      "cursor",
-      "vscode"
+      "view"
     ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
-    }
+      "github": "https://github.com/doughmination",
+      "discord": "https://discord.gg/N8gCjS294R"
+    },
+    "links": [
+      {
+        "header": "Community",
+        "items": [
+          {
+            "label": "Matrix",
+            "href": "https://matrix.to/#/#doughmination:matrix.org"
+          }
+        ]
+      }
+    ]
   }
 }
