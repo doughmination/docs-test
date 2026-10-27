@@ -12,8 +12,8 @@ Sandrone has three sets of links of its own, and nothing else:
 | Domain | What it is |
 |---|---|
 | `discord.com`, `discord.gg` | Discord's own. The invite link is a `discord.com/oauth2/authorize` URL; the support server is a `discord.gg` invite. |
-| `sandrone.is-a.bot` | The bot's short link. It redirects to these docs. |
-| `sandrone.doughmination.gay` | The download host. `/yt-dlp` links point here when a file is too big to attach to a message. |
+| `sandrone.is-a.bot` | The bot's short link. It redirects to `sandrone.doughmination.gay`. |
+| `sandrone.doughmination.gay` | The bot's main site, and the download host. `/yt-dlp` links point here when a file is too big to attach to a message. |
 
 Nothing else on that list. In particular, Sandrone will **never**:
 
@@ -70,11 +70,12 @@ Separate question, and worth not confusing with the list above: several commands
 | `/tweet` | `girlcockx.com`, linking back to `x.com` |
 | `/bluesky` | `public.api.bsky.app`, linking to `xsky.app` |
 | `/kitty` | `cataas.com` |
-| `/whois` | The WHOIS servers for the domain you asked about, over port 43 |
+| `/whois` | The RDAP servers for the domain you asked about, or its WHOIS servers over port 43 when the registry has no RDAP |
+| `/dig` | The public DNS resolvers `1.1.1.1` (Cloudflare) and `9.9.9.9` (Quad9) |
 | `/profile`, `/genshin` | `doughmination.uk` |
 | `/translate` | The Argos Translate package index |
 | `/stats` | `ip-api.com`, for the bot's own hosting region |
-| Images and GIFs in embeds | `m.doughmination.gay`, the CDN |
+| Images and GIFs in embeds | `raw.doughmination.gay`, the CDN |
 
 The [*Privacy Policy*](/sandrone/privacy) says what each of those receives.
 

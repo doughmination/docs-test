@@ -103,15 +103,39 @@ Look up a definition on Urban Dictionary. Returns the top definition, an example
 
 Look up the WHOIS record for a domain or an IP address.
 
-Sandrone speaks the WHOIS protocol itself, on port 43. It starts at IANA, follows the referral to the registry for that TLD, then on to the registrar, up to four hops, and merges what comes back — so you get the registrar's detailed record rather than the registry's thin one.
+For a **domain**, Sandrone asks the registry over RDAP first — the structured replacement for WHOIS that every generic TLD runs. Where a registry has no RDAP server (`.de` is one), it falls back to speaking WHOIS itself on port 43: it starts at IANA, follows the referral to the registry for that TLD, then on to the registrar, up to four hops, and merges what comes back. **IP addresses** always go over port 43.
 
-For a **domain** it reports the registrar, registration, update and expiry dates, the registrant and country, DNSSEC status, domain status codes, and up to eight name servers.
+The reply is split into sections, and the menu under it switches between them so the full record fits without one enormous message:
 
-For an **IP address** it reports the allocated range and CIDR, the network name, the organisation it's allocated to, country, allocation and update dates, and the abuse contact.
+| Section | What's in it |
+|---|---|
+| **Overview** | Registrar, registrant organisation, registration, update and expiry dates (with how long ago or how long until), and DNSSEC. For an IP: the range and CIDR, network name, organisation, country, and allocation dates. |
+| **Status** | Every status code, each linked to ICANN's explanation of what it means. |
+| **Name Servers** | Every name server, not just the first few. |
+| **Contacts** | The registrar's email, phone and address, and the abuse contact. |
+| **Raw Record** | The record exactly as the WHOIS server sent it. Only for port 43 lookups — RDAP has no raw text. |
+
+A section only appears if there's something in it. For generic TLDs like `.com` or `.gay` there's also a **Report inaccurate data** button, which goes to ICANN's complaint form; ICANN doesn't police country codes, so they don't get one.
 
 You can paste almost anything domain-shaped at it. A full URL, a `www.` prefix, an email address, a port on the end, a trailing dot — all get trimmed down to the name before it asks.
 
-Some registries deliberately return almost nothing (GDPR redaction is the usual reason), so a sparse reply is often the registry being sparse rather than a failure. Where nothing structured comes back at all, you get the raw record.
+<Note>
+Sandrone never posts a person's name, email, phone number or address from a record, even when the registry hands them over. Values like *REDACTED FOR PRIVACY* are skipped rather than shown, and personal contact lines in the raw record are replaced with `[hidden]`. Organisations and countries are kept.
+</Note>
+
+Some registries deliberately return almost nothing (GDPR redaction is the usual reason), so a sparse reply is often the registry being sparse rather than a failure.
+
+### `/dig <query>`
+
+Look up the DNS records for a domain.
+
+Sandrone asks the public resolvers `1.1.1.1` and `9.9.9.9` — never its host's own, which could answer for internal names — for **A**, **AAAA**, **CNAME**, **MX**, **NS**, **TXT**, **SOA** and **CAA** records, all at once.
+
+The first page shows every type that has records, with a short preview of each. The menu jumps to one type at a time, with its full list of records and their TTL.
+
+Give it an **IP address** and it does a reverse lookup instead, returning the `PTR` record — `1.1.1.1` comes back as `one.one.one.one`.
+
+URLs, ports and trailing dots are trimmed off like `/whois` does, but a `www.` is kept: `www.example.com` is a different DNS name from `example.com`, and can have different records.
 
 ---
 

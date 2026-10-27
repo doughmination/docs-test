@@ -47,8 +47,10 @@ These are answers, not failures — the thing you asked about doesn't exist or i
 | *"That Codeberg account does not exist."* | No such user on Codeberg. |
 | *"That Wikipedia page does not exist…"* | Try different capitalisation — Wikipedia titles can be case-sensitive past the first letter. |
 | *"Could not find that definition in Urban Dictionary"* | No entry for that term. |
-| *"No WHOIS server published a record for `…`"* | The referral chain didn't reach a server with a record. Usually a TLD that doesn't run public WHOIS. |
+| *"No WHOIS server published a record for `…`"* | The TLD has no RDAP server and the WHOIS referral chain didn't reach a server with a record. Usually a TLD that doesn't run public WHOIS. |
 | *"No WHOIS record found for `…`"* | The domain is genuinely unregistered, or the registry says it's available. |
+| *"`…` does not exist."* | `/dig` got an NXDOMAIN: no such name exists in DNS. Check the spelling, and whether the subdomain is real. |
+| *"No DNS records found for `…`"* | The name exists, but has none of the record types `/dig` asks for. |
 | *"No Discord profile found for @…"* | The profile API hasn't seen that user. A coverage gap, not a fault on your side. |
 | *"@… doesn't have a registered PluralKit system."* | Exactly that. |
 | *"…'s current front is private."* | The system has front privacy switched on. Working as intended. |
@@ -64,7 +66,8 @@ These are answers, not failures — the thing you asked about doesn't exist or i
 | *"Only YouTube links are supported."* | `/yt-dlp` accepts `youtube.com`, `youtu.be` and `music.youtube.com`, and nothing else. |
 | *"That doesn't look like a `twitter.com` or `x.com` post link."* | `/tweet` needs a link to a specific post, with `/status/<id>` in it — not a profile. |
 | *"That doesn't look like a `bsky.app` or `xsky.app` post link."* | `/bluesky` needs a post link, with `/profile/…/post/…` in it. |
-| *"That doesn't look like a domain or IP address. Try `example.com`."* | `/whois` couldn't make sense of the input. |
+| *"That doesn't look like a domain or IP address. Try `example.com`."* | `/whois` or `/dig` couldn't make sense of the input. |
+| *"`…` is not a valid domain."* | `/dig` was given a name DNS can't hold — an empty label like `a..b`, or a label over 63 characters. |
 | *"That doesn't look like a Genshin UID — it should be 9–10 digits."* | `/genshin` checks the shape before looking anything up. The UID is on your in-game profile. |
 | *"There are no letters or digits in that to re-case."* | `/case` was given punctuation only. |
 | *"That isn't valid JSON"* | With the parser's complaint, the line and column, and a caret under the exact character. |
@@ -85,6 +88,7 @@ These mean a service Sandrone depends on is having a bad day. Waiting and retryi
 | *"Couldn't reach Codeberg — try again in a moment."* | Codeberg |
 | *"Couldn't reach Urban Dictionary — try again in a moment."* | Urban Dictionary |
 | *"Couldn't reach the WHOIS servers — try again in a moment."* | The WHOIS server for that TLD |
+| *"The DNS lookup timed out."* | The public resolvers `/dig` uses, or the domain's own name servers |
 | *"Couldn't reach girlcockx.com — try again in a moment."* | The X/Twitter embed proxy |
 | *"Couldn't reach Bluesky — try again in a moment."* | Bluesky's public API |
 | *"Couldn't reach the Argos package index — try again in a moment."* | The translation model index |

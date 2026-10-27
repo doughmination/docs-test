@@ -90,7 +90,7 @@ A stylesheet can link to these and nowhere else:
 |---|---|
 | `fonts.googleapis.com` | Google Fonts stylesheets, via `@import` |
 | `fonts.gstatic.com` | the font files those stylesheets use |
-| `m.doughmination.gay` | the pkviewer CDN — images, fonts, anything static |
+| `raw.doughmination.gay` | the pkviewer CDN — images, fonts, anything static |
 
 Anywhere else is refused. A request tells whoever hosts it the address of everyone who looked at your page, and it is also how CSS is used to *read* a page: a selector matching only certain content, paired with a request, reports back one character at a time. Restricting where requests can go means that technique has nowhere to send anything — the three hosts above are ones pkviewer already asks your visitors to contact, and nobody can read their logs.
 
@@ -136,7 +136,7 @@ Or point `@font-face` at a file on the CDN:
 ```css
 @font-face {
   font-family: "My Font";
-  src: url("https://m.doughmination.gay/fonts/myfont.woff2") format("woff2");
+  src: url("https://raw.doughmination.gay/fonts/myfont.woff2") format("woff2");
   font-display: swap;
 }
 ```

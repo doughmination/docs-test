@@ -51,12 +51,13 @@ Some commands work by asking another service on your behalf. When you use one, t
 - **Pluralpedia** and **morethanone.info**, which are linked by `/snippet`'s plurality explainer.
 - **girlcockx.com**, which receives the post URL you give `/tweet`, to build the embed.
 - **Bluesky's public API**, which receives the handle and post ID you give `/bluesky`. The resulting embed links to **xsky.app**.
-- **WHOIS servers**, which receive the domain or IP you give `/whois`. The lookup starts at IANA and follows referrals to the registry and registrar for that name, so more than one operator sees the query. It never carries anything about you — WHOIS has no facility for it.
+- **RDAP and WHOIS servers**, which receive the domain or IP you give `/whois`. Domains are looked up over RDAP first, starting from IANA's list of registry servers, and fall back to WHOIS, which starts at IANA and follows referrals to the registry and registrar for that name — so more than one operator sees the query. It never carries anything about you, since neither protocol has a facility for it. Sandrone also leaves personal contact details out of what it posts, even when a registry hands them over.
+- **Cloudflare (1.1.1.1)** and **Quad9 (9.9.9.9)**, the public DNS resolvers that receive the domain or IP you give `/dig`. The query carries the bot server's address, not yours.
 - **The Doughmination API** (`doughmination.uk`), which `/profile` queries with the Discord ID of whoever the command is run on, and which `/genshin` queries with the Genshin UID you type. That UID is a game account number you supply, not something Sandrone knows about you, and it is not recorded anywhere.
 - **Enka.Network**, which is where the Doughmination API gets Genshin account data from. Your UID reaches it through that API when you run `/genshin`; nothing about your Discord account does.
 - **The Argos Translate package index**, which `/translate` contacts to list and download language models. The translation itself runs locally on the bot's host — the text you type is **not** sent to a translation service.
 - **cataas**, which serves `/kitty` a random image and receives nothing about you.
-- **m.doughmination.gay**, the CDN that serves images and GIFs, which your Discord client fetches the way it fetches any embedded image.
+- **raw.doughmination.gay**, the CDN that serves images and GIFs, which your Discord client fetches the way it fetches any embedded image.
 
 One thing worth being explicit about: `/stats` calls **ip-api.com** to report where the bot's own server is hosted. It never sends your IP address, and it cannot, because the bot does not have it. The result is cached until the next restart, so it is asked at most once per run of the bot.
 
